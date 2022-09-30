@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import pe.edu.ulima.pm.misnotas.model.CoursesManager
+import pe.edu.ulima.pm.misnotas.presentation.components.CourseListType
 import pe.edu.ulima.pm.misnotas.presentation.components.CoursesList
 import pe.edu.ulima.pm.misnotas.presentation.components.Header
 
@@ -22,7 +23,8 @@ fun CoursesScreen() {
     ) {
         Header()
         CoursesList(
-            courses = CoursesManager.getInstance().getCourses()
+            courses = CoursesManager.getInstance().getCourses(),
+            type = CourseListType.Grid
         )
     }
 }
