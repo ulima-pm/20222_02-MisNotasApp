@@ -10,18 +10,23 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import pe.edu.ulima.pm.misnotas.model.CoursesManager
+import pe.edu.ulima.pm.misnotas.presentation.screens.CoursesScreen
 import pe.edu.ulima.pm.misnotas.ui.theme.MisNotasTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val courses = CoursesManager.getInstance().getCourses()
+
         setContent {
             MisNotasTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    
+                    CoursesScreen()
                 }
             }
         }

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import pe.edu.ulima.pm.misnotas.presentation.components.CoursesList
 import pe.edu.ulima.pm.misnotas.presentation.components.Header
 
@@ -16,4 +17,10 @@ fun CoursesScreen() {
         Header()
         CoursesList()
     }
+}
+
+@Composable
+@Preview(showBackground = true)
+fun ShowCoursesScreen() {
+    CoursesScreen()
 }
