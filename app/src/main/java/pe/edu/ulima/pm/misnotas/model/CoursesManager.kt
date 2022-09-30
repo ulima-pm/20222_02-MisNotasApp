@@ -9,7 +9,7 @@ data class Course(
 )
 
 // Fachada (Faccade)
-class CoursesManager() {
+class CoursesManager private constructor() {
     private val courses = mutableListOf<Course>()
 
     init {
