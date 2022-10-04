@@ -3,6 +3,8 @@ package pe.edu.ulima.pm.misnotas.presentation.screens
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
@@ -16,6 +18,10 @@ fun MainNavigationScreen() {
     val scaffoldState  = rememberScaffoldState()
     val scope = rememberCoroutineScope()
 
+    val title = remember {
+        mutableStateOf("App de Notas")
+    }
+
     val openDrawer : () -> Unit = {
         scope.launch {
             scaffoldState.drawerState.open()
@@ -27,17 +33,24 @@ fun MainNavigationScreen() {
             scaffoldState.drawerState.close()
         }
     }
+    val changeTitle : (String) -> Unit = { newTitle ->
+        title.value = newTitle
+    }
     
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = {
             TopBar(
-                title = "App de Notas",
+                title = title.value,
                 onOpenDrawer = openDrawer
             )
         },
         drawerContent = {
-            DrawerMenu()
+            DrawerMenu(
+                navController = navController,
+                onCloseDrawer = closeDrawer,
+                onChangeTitle = changeTitle
+            )
         }
     ) {
         NavigationGraph(
