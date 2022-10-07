@@ -15,7 +15,7 @@ enum class CourseListType {
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CoursesList(
-    courses : MutableList<Course>,
+    courses : List<Course>,
     type : CourseListType
 ) {
     if (type == CourseListType.List){
